@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head(${title})">
+    <meta charset="UTF-8">
+    <title>Delete Customer</title>
+</head>
+<body>
+<div class="container mt-3">
+    <div class="card">
+        <div class="card-header">Delete Customer <a th:href="@{/customers}">List Customers</a></div>
+        <div class="card-body">
+            <form th:action="@{/customers/delete}" th:object="${customer}" method="post">
+                <div class="row mb-3">
+                    <label th:for="*{id}" class="col-form-label col-md-2">Name:</label>
+                    <div class="col-md-10">
+                        <input type="text" th:field="*{id}" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label th:for="*{name}" class="col-form-label col-md-2">Name:</label>
+                    <div class="col-md-10">
+                        <input type="text" th:field="*{name}" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label th:for="*{email}" class="col-form-label col-md-2">Email:</label>
+                    <div class="col-md-10">
+                        <input type="email" th:field="*{email}" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label th:for="*{address}" class="col-form-label col-md-2">Address:</label>
+                    <div class="col-md-10">
+                        <input type="text" th:field="*{address}" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Confirm delete customer</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

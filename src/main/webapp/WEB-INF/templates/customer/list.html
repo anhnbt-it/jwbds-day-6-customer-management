@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head(${title})">
+    <meta charset="UTF-8">
+    <title>List Customers</title>
+</head>
+<body>
+<div class="container mt-3">
+    <div class="card">
+        <div class="card-header">List Customers <a th:href="@{/customers/create}">Add New Customer</a></div>
+        <div class="card-body">
+            <th:block th:if="${message}">
+                <div class="alert alert-success" th:text="${message}"></div>
+            </th:block>
+            <th:block th:if="${customers.isEmpty()}">
+                <p class="alert alert-warning">No data</p>
+            </th:block>
+            <table class="table table-bordered" th:if="${customers.size() > 0   }">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="c: ${customers}">
+                    <td th:text="*{c.id}"></td>
+                    <td th:text="*{c.name}"></td>
+                    <td th:text="*{c.email}"></td>
+                    <td th:text="*{c.address}"></td>
+                    <td>
+                        <a th:href="@{/customers/edit/{id}(id=${c.id})}" class="btn btn-info btn-sm text-white">Edit</a>
+                        <a th:href="@{/customers/delete/{id}(id=${c.id})}" class="btn btn-danger btn-lg">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
